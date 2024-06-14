@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Artemis Test Hello II</title>
+		<!--
+		<script type="text/javascript" charset="utf-8" src="/js/jquery.simplemodal.js"></script>
+		<script type="text/javascript" charset="utf-8" src="/js/jquery.blockUI.js"></script>
+		-->
+		<script type="text/javascript" charset="utf-8" src="/js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="/js/jquery-ui-1.8.16.custom.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="/js/script.js"></script>
+		<script>
+			function ajaxSendTest1() {
+				
+				if($("#csno1").val() == "" || $("#csno1").length < 1){
+					alert("고객번호 미입력");
+					$("#csno1").focus();
+					return;
+				 }
+			
+				var frmData = document.frmTest1;
+				var dataf = {
+					'csno' : $("#csno1").val()
+				}
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/dto-test.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:dataf,
+				    //--JSON.stringify(data),
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(xhr){
+						//xhr.setRequestHeader(header, token)
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			
+			function ajaxSendTest2() {
+				
+				if($("#csno2").val() == "" || $("#csno2").length < 1){
+					alert("고객번호 미입력");
+					$("#csno2").focus();
+					return;
+				 }
+			
+				var frmData = document.frmTest2;
+				var data = {
+					'csno' : $("#csno2").val()
+				}
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/dto-test-nobody.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:JSON.stringify(data),
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(xhr){
+						//xhr.setRequestHeader(header, token)
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			function ajaxSendTest3() {
+				
+				if($("#csno3").val() == "" || $("#csno3").length < 1){
+					alert("고객번호 미입력");
+					$("#csno3").focus();
+					return;
+				 }
+			
+				var frmData = document.frmTest3;  // not used
+				var data = {
+					'csno' : $("#csno3").val()
+				}
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/testPostArrList4Json2.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:JSON.stringify(data),
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(xhr){
+						//xhr.setRequestHeader(header, token)
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			// Spring
+			function ajaxSendTest4() {
+				
+				if($("#csno4").val() == "" || $("#csno4").length < 1){
+					alert("고객번호 미입력");
+					$("#csno4").focus();
+					return;
+				 }
+			
+				var frmData = document.frmTest4;  // not used
+				var data = {
+					'csno' : $("#csno4").val()
+				}
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/SpringTest.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:data,
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(xhr){
+						//xhr.setRequestHeader(header, token)
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			// Spring5
+			function ajaxSendTest5() {
+				
+				if($("#csno5").val() == "" || $("#csno5").length < 1){
+					alert("고객번호 미입력");
+					$("#csno5").focus();
+					return;
+				 }
+			
+				var frmData = document.frmTest5;  // not used
+				var data = {
+					'csno' : $("#csno5").val()
+				}
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/testParamGo.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:data,
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(xhr){
+						//xhr.setRequestHeader(header, token)
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			
+			// Spring 6
+			function ajaxSendTest6() {
+				
+				if($("#csno6").val() == "" || $("#csno6").length < 1){
+					alert("고객번호 미입력");
+					$("#csno6").focus();
+					return;
+				 }
+			
+				var frmData = document.frmTest6;  // not used
+				var data = {
+					'csno' : $("#csno6").val()
+				}
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/SpringTest2.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:data,
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(xhr){
+						//xhr.setRequestHeader(header, token)
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			// Spring 7
+			function ajaxSendTest7() {
+				
+				if($("#csno7").val() == "" || $("#csno7").length < 1){
+					alert("고객번호 미입력");
+					$("#csno7").focus();
+					return;
+				 }
+			
+				var frmData = document.frmTest7;  // not used
+				var data = {
+					'csno' : $("#csno7").val()
+				}
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/SpringTest3.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:data,
+					//error:function(request, status, error){
+					//	alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					//},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(xhr){
+						//xhr.setRequestHeader(header, token)
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			// POST Ajax json TEST용
+			function ajaxSendTest12() {
+				
+				if($("#csno12").val() == ""){
+					alert("고객번호 미입력");
+					$("#csno12").focus();
+				 }
+			
+				var frmData = document.frmTest12;
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/testPostArrList.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:frmData,
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(){
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+		</script>
+	</head>
+	<body>
+		<h1>아르테미스 헬로우 II</h1>	
+		<br />
+		<form id="frmTest0" method="POST"  action="/dto-test.do" >			
+			<input type="text" id="csno0" name="csno" />
+			<input type="submit" value="전송(Post DTO)" >
+			<br />
+			<br />
+			<textarea id="txResult0" >
+				
+			</textarea>	
+		</form>		
+
+		<br />				
+		<br />				
+		<br />				
+		<form id="frmTest1" method="post"  action="" >			
+			<input type="text" id="csno1" name="csno" />
+			<input type="button"id="btnTest1" onclick="ajaxSendTest1()" value="전송 POST DTO/Ajax" >
+			<br />
+			<br />
+			<textarea id="txResult1" >
+				
+			</textarea>	
+		</form>	
+
+		<br />				
+		<br />
+		<br />
+		<form id="frmTest2" method="post" action="">			
+			<input type="text" id="csno2" name="csno" />
+			<input type="button"id="btnTest2" onclick="ajaxSendTest2()" value="전송 POST DTO/Ajax NoBody" >
+			<br />
+			<br />
+			<textarea id="txResult2" >
+				
+			</textarea>	
+		</form>
+
+		<br />				
+		<br />
+		<br />
+		<form id="frmTest3" method="post" action="">			
+			<input type="text" id="csno3" name="csno" />
+			<input type="button"id="btnTest3" onclick="ajaxSendTest3()" value="전송 POST DTO/Ajax NoBody REST" >
+			<br />
+			<br />
+			<textarea id="txResult3" >
+				
+			</textarea>	
+		</form>
+		<br />				
+		<br />
+		<br />
+		<form id="frmTest4" method="post" action="">			
+			<input type="text" id="csno4" name="csno" />
+			<input type="button"id="btnTest4" onclick="ajaxSendTest4()" value="전송 POST DTO/Ajax NoBody Spring" >
+			<br />
+			<br />
+			<textarea id="txResult4" >
+				
+			</textarea>	
+		</form>
+		<br />				
+		<br />
+		<br />
+		<form id="frmTest5" method="post" action="">			
+			<input type="text" id="csno5" name="csno" />
+			<input type="button"id="btnTest5" onclick="ajaxSendTest5()" value="전송 POST DTO/Ajax Spring5" >
+			<br />
+			<br />
+			<textarea id="txResult5" >
+				
+			</textarea>	
+		</form>
+		<br />				
+		<br />
+		<br />
+		<form id="frmTest6" method="post" action="">			
+			<input type="text" id="csno6" name="csno" />
+			<input type="button"id="btnTest6" onclick="ajaxSendTest6()" value="전송 POST DTO/Ajax NoBody Spring III" >
+			<br />
+			<br />
+			<textarea id="txResult6" >
+				
+			</textarea>	
+		</form>
+		<br />				
+		<br />
+		
+		<form id="frmTest7" method="post" action="">			
+			<input type="text" id="csno7" name="csno" />
+			<input type="button"id="btnTest7" onclick="ajaxSendTest7()" value="전송 POST DTO/Ajax NoBody Spring II" >
+			<br />
+			<br />
+			<textarea id="txResult7" >
+				
+			</textarea>	
+		</form>
+<!--
+			<br />				
+		<br />
+		<br />
+		<form id="frmTest12" method="post" >			
+			<input type="text" id="csno12" name="csno" />
+			<input type="button" onclick="ajaxSendTest12();" value="전송(Post/Ajax)" >
+			<br />
+			<br />
+			<textarea id="txResult12" >
+				
+			</textarea>	
+		</form>
+		<br />				
+		<br />
+		<br />
+		<form id="frmTest2" method="post" >			
+			<input type="text" id="csno2" name="csno" />
+			<input type="button" onclick="ajaxSendTest2();" value="전송(NJ/Ajax)" >
+			<br />
+			<br />
+			<textarea id="txResult2" >
+				
+			</textarea>	
+		</form>
+-->		
+		
+	</body>	
+	
+</html>

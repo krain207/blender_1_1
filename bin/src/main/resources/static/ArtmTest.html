@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Artemis Test Hello</title>
+		<!--
+		<script type="text/javascript" charset="utf-8" src="/js/jquery.simplemodal.js"></script>
+		<script type="text/javascript" charset="utf-8" src="/js/jquery.blockUI.js"></script>
+		-->
+		<script type="text/javascript" charset="utf-8" src="/js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="/js/jquery-ui-1.8.16.custom.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="/js/script.js"></script>
+		<script>
+			function ajaxSendTest2() {
+				
+				if($("#csno2").val() == ""){
+					alert("고객번호 미입력");
+					$("#csno2").focus();
+				 }
+			
+				var frmData = document.frmTest2;
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/testNRPostArrList.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:frmData,
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(){
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			// POST Ajax json TEST용
+			function ajaxSendTest12() {
+				
+				if($("#csno12").val() == ""){
+					alert("고객번호 미입력");
+					$("#csno12").focus();
+				 }
+			
+				var frmData = document.frmTest12;
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/testPostArrList.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:frmData,
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(){
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+		</script>
+	</head>
+	<body>
+		<h1>아르테미스 헬로우</h1>	
+		<br />
+		<form id="frmTest0" method="GET"  action="/testGetArrList0.do?csno=5366" >			
+			<input type="submit"id="btnTest0" value="전송Get" >
+			<br />
+			<br />
+			<textarea id="txResult0" >
+				
+			</textarea>	
+		</form>		
+		<br />				
+		<br />				
+		<br />				
+		<form id="frmTest" method="post"  action="/testPostArrList.do" >			
+			<input type="text" id="csno" name="csno" />
+			<input type="submit" title="testbutton" id="btnTest" value="전송Post" >
+			<br />
+			<br />
+			<textarea id="txResult" >
+				
+			</textarea>	
+		</form>		
+		<br />				
+		<br />
+		<br />
+		<form id="frmTest11" method="post" action="/testPostArrList4Json.do">			
+			<input type="text" id="csno11" name="csno" />
+			<!--
+			<input type="submit" title="testbutton" id="btnTest11" value="전송(POST JSON)" >
+			-->
+			<input type="submit" value="전송(POST Json)" >
+			<br />
+			<br />
+			<textarea id="txResult11" >
+				
+			</textarea>	
+		</form>
+		<br />				
+		<br />
+		<br />
+		<form id="frmTest12" method="post" >			
+			<input type="text" id="csno12" name="csno" />
+			<input type="button" onclick="ajaxSendTest12();" value="전송(Post/Ajax)" >
+			<br />
+			<br />
+			<textarea id="txResult12" >
+				
+			</textarea>	
+		</form>
+		<br />				
+		<br />
+		<br />
+		<form id="frmTest2" method="post" >			
+			<input type="text" id="csno2" name="csno" />
+			<!--
+			<input type="submit" title="testbutton" id="btnTest2" value="전송(NR)" >
+			-->
+			<input type="button" onclick="ajaxSendTest2();" value="전송(NJ/Ajax)" >
+			<br />
+			<br />
+			<textarea id="txResult2" >
+				
+			</textarea>	
+		</form>
+	</body>	
+	
+</html>

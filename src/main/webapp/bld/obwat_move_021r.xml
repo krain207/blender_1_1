@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transaction name="obwat_move_021r">
+	<info>
+		<name>카카오톡 알리미 연계 전문</name>
+		<description />
+		<tuxcode/>
+		<base21>obwat_move_021r</base21>
+		<attr/>
+		<block/>
+		<headtype/>
+		<author/>
+		<version>0.1</version>
+	</info>
+	<input>
+		<block name="_OBWAT_MOVE_021R_InBlock1" repeat="1">
+			<field label="처리구분코드" name="PROS_CLS_CODE" type="string" size="1"/>
+			<field label="계좌번호" name="ACNO" type="string" size="8"/>
+			<field label="계좌일련번호" name="ASNO" type="string" size="2"/>
+			<field label="코드값" name="CODE_VAL" type="string" size="20"/>
+			<field label="코드유효값" name="CODE_VALD_VAL" type="string" size="100"/>
+		</block>
+	</input>
+	<output>
+		<block name="_OBWAT_MOVE_021R_OutBlock1" repeat="1">
+			<field label="추출상세내용" name="EXTT_DTL_CNTT" type="string" size="1000"/>
+		</block>
+	</output>
+</transaction>

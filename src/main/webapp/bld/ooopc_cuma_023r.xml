@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transaction name="ooopc_cuma_023r">
+	<info>
+		<name>개인고객연락처정보조회 (ooopc_cuma_023r)</name>
+		<description />
+		<tuxcode/>
+		<base21>ooopc_cuma_023r</base21>
+		<attr/>
+		<block/>
+		<headtype/>
+		<author/>
+		<version>0.1</version>
+	</info>
+	<input>
+		<block name="_OOOPC_CUMA_023R_InBlock1" repeat="1">
+			<field label="고객번호" name="CSNO" type="string" size="10"/>
+		</block>
+	</input>
+	<output>
+		<block name="_OOOPC_CUMA_023R_OutBlock1" repeat="1">
+			<field label="고객번호" name="CSNO" type="string" size="10"/>
+			<field label="고객풀명" name="CUST_FULL_NAME" type="string" size="100"/>
+			<field label="고객구분코드" name="CUST_CLS_CODE" type="string" size="1"/>
+			<field label="자택전화번호" name="OWHS_TELNO" type="string" size="40"/>
+			<field label="직장전화번호" name="WRPL_TELNO" type="string" size="15"/>
+			<field label="휴대폰전화번호" name="CLPH_TELNO" type="string" size="20"/>
+			<field label="자택우편번호" name="OWHS_ZIP" type="string" size="6"/>
+			<field label="자택주소" name="OWHS_ADDR" type="string" size="200"/>
+			<field label="직장우편번호" name="WRPL_ZIP" type="string" size="6"/>
+			<field label="직장주소" name="WRPL_ADDR" type="string" size="200"/>
+			<field label="기타우편번호" name="ETC_ZIP" type="string" size="6"/>
+			<field label="기타주소" name="ETC_ADDR" type="string" size="200"/>
+			<field label="이메일주소" name="EMAIL_ADDR" type="string" size="200"/>
+			<field label="우편물통보처유형코드" name="MAIL_INAG_TYPE_CODE" type="string" size="2"/>
+			<field label="통보처유형명" name="INAG_TYPE_NAME" type="string" size="40"/>
+			<field label="홍보전화수신여부" name="PBLT_TLPH_RCMS_YN" type="string" size="1"/>
+			<field label="홍보물수신여부" name="PRML_RCMS_YN" type="string" size="1"/>
+			<field label="홍보SMS수신여부" name="PBLT_SMS_RCMS_YN" type="string" size="1"/>
+			<field label="홍보이메일수신여부" name="PBLT_EMAIL_RCMS_YN" type="string" size="1"/>
+		</block>
+	</output>
+</transaction>

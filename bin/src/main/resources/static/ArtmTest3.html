@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Artemis Test KaKao Send</title>
+		<!--
+		<script type="text/javascript" charset="utf-8" src="/js/jquery.simplemodal.js"></script>
+		<script type="text/javascript" charset="utf-8" src="/js/jquery.blockUI.js"></script>
+		-->
+		<script type="text/javascript" charset="utf-8" src="/js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="/js/jquery-ui-1.8.16.custom.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="/js/script.js"></script>
+		<script>
+			function ajaxSendTest1() {
+				
+				if($("#acno1").val() == "" || $("#acno1").length < 1){
+					alert("계좌번호 미입력");
+					$("#acno1").focus();
+					return;
+				 }
+			
+				var frmData = document.frmTest1;
+				var dataf = {
+					'acno' : $("#acno1").val()
+					, 'prosClsCode' : $("#prosClsCode1").val()
+				}
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/kaKaoTest1.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:dataf,
+				    //--JSON.stringify(data),
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(xhr){
+						//xhr.setRequestHeader(header, token)
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			
+			function ajaxSendTest2() {
+				
+				if($("#csno2").val() == "" || $("#csno2").length < 1){
+					alert("고객번호 미입력");
+					$("#csno2").focus();
+					return;
+				 }
+			
+				var frmData = document.frmTest2;
+				var data = {
+					'csno' : $("#csno2").val()
+				}
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/dto-test-nobody.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:JSON.stringify(data),
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(xhr){
+						//xhr.setRequestHeader(header, token)
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			function ajaxSendTest3() {
+				
+				if($("#csno3").val() == "" || $("#csno3").length < 1){
+					alert("고객번호 미입력");
+					$("#csno3").focus();
+					return;
+				 }
+			
+				var frmData = document.frmTest3;  // not used
+				var data = {
+					'csno' : $("#csno3").val()
+				}
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/testPostArrList4Json2.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:JSON.stringify(data),
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(xhr){
+						//xhr.setRequestHeader(header, token)
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			// Spring
+			function ajaxSendTest4() {
+				
+				if($("#csno4").val() == "" || $("#csno4").length < 1){
+					alert("고객번호 미입력");
+					$("#csno4").focus();
+					return;
+				 }
+			
+				var frmData = document.frmTest4;  // not used
+				var data = {
+					'csno' : $("#csno4").val()
+				}
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/SpringTest.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:data,
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(xhr){
+						//xhr.setRequestHeader(header, token)
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			// Spring5
+			function ajaxSendTest5() {
+				
+				if($("#csno5").val() == "" || $("#csno5").length < 1){
+					alert("고객번호 미입력");
+					$("#csno5").focus();
+					return;
+				 }
+			
+				var frmData = document.frmTest5;  // not used
+				var data = {
+					'csno' : $("#csno5").val()
+				}
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/testParamGo.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:data,
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(xhr){
+						//xhr.setRequestHeader(header, token)
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			
+			// Spring 6
+			function ajaxSendTest6() {
+				
+				if($("#csno6").val() == "" || $("#csno6").length < 1){
+					alert("고객번호 미입력");
+					$("#csno6").focus();
+					return;
+				 }
+			
+				var frmData = document.frmTest6;  // not used
+				var data = {
+					'csno' : $("#csno6").val()
+				}
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/SpringTest2.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:data,
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(xhr){
+						//xhr.setRequestHeader(header, token)
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			// Spring 7
+			function ajaxSendTest7() {
+				
+				if($("#csno7").val() == "" || $("#csno7").length < 1){
+					alert("고객번호 미입력");
+					$("#csno7").focus();
+					return;
+				 }
+			
+				var frmData = document.frmTest7;  // not used
+				var data = {
+					'csno' : $("#csno7").val()
+				}
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/SpringTest3.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:data,
+					//error:function(request, status, error){
+					//	alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					//},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(xhr){
+						//xhr.setRequestHeader(header, token)
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+			// POST Ajax json TEST용
+			function ajaxSendTest12() {
+				
+				if($("#csno12").val() == ""){
+					alert("고객번호 미입력");
+					$("#csno12").focus();
+				 }
+			
+				var frmData = document.frmTest12;
+				
+				$.ajax({
+					type: "POST",
+				    async : true,
+				    url: "/testPostArrList.do",
+				    dataType:"application/json",
+				    timeout:30000,
+				    data:frmData,
+					error:function(request, status, error){
+						alert(error.sysMsg + " (" + error.sysMsgCode + ")");
+					},
+				    success: function(response, status, request ) {
+						//결과가 정상일때...
+				    	if(response.sysCode=='0'){
+
+							if(response.resultList[0].length < 1 ){
+								alert("조회건수 0");	
+							} else {
+								alert("조회건수 : " + response.resultList[0].length);
+							}
+			
+				    		
+						}else{
+							alert(response.sysMsg + "::"+ response.sysSubMsg + ":" + response.sysMsgCode);
+							
+						}
+					},
+					beforeSend: function(){
+						//$.blockUI({});
+					},
+					complete: function(){
+						//{$.unblockUI();}
+					}
+				});
+			}
+			
+		</script>
+	</head>
+	<body>
+		<h1>아르테미스 KaKao Test</h1>	
+		<br />				
+		<br />				
+		<form id="frmTest1" method="post"  action="" >			
+			<label>ProsClsCode</label>&nbsp;<input type="text" id="prosClsCode1" name="prosClsCode" />
+			<br />
+			<label>Acno</label>&nbsp;<input type="text" id="acno1" name="acno" /><br />
+			<br />
+			<input type="button"id="btnTest1" onclick="ajaxSendTest1()" value="전송 POST KaKao/Ajax" >
+			<br />
+			<br />
+			<textarea id="txResult1" >
+				
+			</textarea>	
+		</form>	
+		
+	</body>	
+	
+</html>
